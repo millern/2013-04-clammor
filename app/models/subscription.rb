@@ -1,9 +1,11 @@
 class Subscription < ActiveRecord::Base
-  # TODO Implement Subscription associations. See subscription_spec.rb for specification.
-
-  # TODO Implement a Subscription custom validation. See subscription_spec.rb for specification.
-  
-  def renew_date_is_valid_datetime
-    # TODO Should validate that the renew_date column is a valid DateTime.  See subscription_spec.rb for more tips 
-  end
+  belongs_to :user
+  belongs_to :group
+  # validate :renew_date_is_valid_datetime?
+  # def renew_date_is_valid_datetime?
+  #   unless renew_date
+  #     errors.add(:renew_date,"is not valid")
+  #   end
+  # end
+  validates :renew_date, presence: true  #this does the same thing as the above block
 end
