@@ -1,6 +1,9 @@
 class Post < ActiveRecord::Base
-  # TODO Implement Post associations. See post_spec.rb for specification.
+  attr_accessible :title, :content
+  validates :title, presence: true
+  validates :content, presence: true
 
-  # TODO Implement Post validations. See post_spec.rb for specification.
+  belongs_to :user
+  has_many :comments, dependent: :destroy
 
 end
